@@ -14,7 +14,7 @@ error InsufficientLiquidityMinted();
 error InsufficientLiquidityBurned();
 error TransferFailed();
 
-contract ZuniswapV2Pair is ERC20, Math {
+contract FugaziswapV2Pair is ERC20, Math {
     uint256 constant MINIMUM_LIQUIDITY = 1000;
 
     address public token0;
@@ -28,7 +28,7 @@ contract ZuniswapV2Pair is ERC20, Math {
     event Sync(uint256 reserve0, uint256 reserve1);
 
     constructor(address token0_, address token1_)
-        ERC20("ZuniswapV2 Pair", "ZUNIV2", 18)
+        ERC20("FugaziswapV2 Pair", "FUGAZIV2", 18)
     {
         token0 = token0_;
         token1 = token1_;

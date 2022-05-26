@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 import "ds-test/test.sol";
-import "../ZuniswapV2Pair.sol";
+import "../FugaziswapV2Pair.sol";
 import "../mocks/ERC20Mintable.sol";
 
 interface Vm {
@@ -15,12 +15,12 @@ interface Vm {
     function warp(uint256) external;
 }
 
-contract ZuniswapV2PairTest is DSTest {
+contract FugaziswapV2PairTest is DSTest {
     Vm vm = Vm(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
     ERC20Mintable token0;
     ERC20Mintable token1;
-    ZuniswapV2Pair pair;
+    FugaziswapV2Pair pair;
     TestUser testUser;
 
     function setUp() public {
@@ -28,7 +28,7 @@ contract ZuniswapV2PairTest is DSTest {
 
         token0 = new ERC20Mintable("Token A", "TKNA");
         token1 = new ERC20Mintable("Token B", "TKNB");
-        pair = new ZuniswapV2Pair(address(token0), address(token1));
+        pair = new FugaziswapV2Pair(address(token0), address(token1));
 
         token0.mint(10 ether, address(this));
         token1.mint(10 ether, address(this));
@@ -227,10 +227,10 @@ contract TestUser {
         ERC20(token0Address_).transfer(pairAddress_, amount0_);
         ERC20(token1Address_).transfer(pairAddress_, amount1_);
 
-        ZuniswapV2Pair(pairAddress_).mint();
+        FugaziswapV2Pair(pairAddress_).mint();
     }
 
     function withdrawLiquidity(address pairAddress_) public {
-        ZuniswapV2Pair(pairAddress_).burn();
+        FugaziswapV2Pair(pairAddress_).burn();
     }
 }
